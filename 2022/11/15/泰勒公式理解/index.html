@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>泰勒公式理解 | LeftMidRight's Blog</title><meta name="author" content="左宗右"><meta name="copyright" content="左宗右"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="注：上一个博客被我玩坏了，从上一个博客搬了些东西过来，以此纪念我失去的博客TAT 泰勒公式 常用泰勒公式 \[e ^x&#x3D;1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+R_n(x)\] \[\sin x&#x3D;x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+...+\frac{x^{2k+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="泰勒公式理解">
+<meta property="og:url" content="http://example.com/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="LeftMidRight&#39;s Blog">
+<meta property="og:description" content="注：上一个博客被我玩坏了，从上一个博客搬了些东西过来，以此纪念我失去的博客TAT 泰勒公式 常用泰勒公式 \[e ^x&#x3D;1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+R_n(x)\] \[\sin x&#x3D;x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+...+\frac{x^{2k+">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png">
+<meta property="article:published_time" content="2022-11-15T07:08:43.000Z">
+<meta property="article:modified_time" content="2024-01-15T07:24:31.970Z">
+<meta property="article:author" content="左宗右">
+<meta property="article:tag" content="考研数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '泰勒公式理解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-15 15:24:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/xiuhu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png')"><nav id="nav"><span id="blog-info"><a href="/" title="LeftMidRight's Blog"><span class="site-name">LeftMidRight's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">泰勒公式理解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-15T07:08:43.000Z" title="发表于 2022-11-15 15:08:43">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-15T07:24:31.970Z" title="更新于 2024-01-15 15:24:31">2024-01-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="泰勒公式理解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>注：上一个博客被我玩坏了，从上一个博客搬了些东西过来，以此纪念我失去的博客TAT</strong></p>
+<h1 id="泰勒公式">泰勒公式</h1>
+<h2 id="常用泰勒公式">常用泰勒公式</h2>
+<p><span class="math display">\[e
+^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+R_n(x)\]</span></p>
+<p><span class="math display">\[\sin
+x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+...+\frac{x^{2k+1}}{(2k+1)!}+R_{2k+1}{x}\]</span></p>
+<p><span class="math display">\[\cos
+x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+...+\frac{x^{2k}}{(2k)!}+R_{2k}{x}\]</span></p>
+<p><span
+class="math display">\[\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+...+\frac{x^n}{n}+R_n{x}\]</span></p>
+<p><span
+class="math display">\[(1+x)^a=1+ax+\frac{a(a-1)}{2!}x^2+\frac{a(a-1)(a-2)}{3!}x^3+...+\frac{a(a-1)...(a-n+1)}{n!}x^n+R_{n}x\]</span>
+<strong>引出</strong>：例：<span class="math inline">\(f(x) =
+e^x,求f(3.15) = e^{3.15}\)</span>,即如何计算一般化的函数值</p>
+<p>由拉格朗日中值定理，若<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\(a,b\)</span>为断点的区间上满足拉氏条件则，<span
+class="math inline">\(f(a)-f(b)=f&#39;(\theta)(a-b),\theta\in(a,b),再令a=x_0,b=x,若f(x)一阶导存在,则原式=f(x)=f(x_0)+f&#39;(\theta)(x-x_0)\)</span></p>
+<p><span
+class="math inline">\(而若函数f(x)的二阶导存在，则我们猜想可以将f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+K(x-x_0)^2,则K=\frac{f(x)-[f(x_0)+f&#39;(x_0)(x-x_0)]}{(x-x_0)^2}\)</span></p>
+<p><span
+class="math inline">\(我们设G(x)=f(x)-[f(x)+f&#39;(x)(x-x_0)],H(x)=(x-x_0)^2,而G(x_0)=
+f(x_0)-[f(x_0)+f&#39;(x_0)(x-x_0)]=0,\)</span></p>
+<p><span
+class="math inline">\(H(x_0)=0,所以K=\cfrac{G(x)-G(x_0)}{H(x)-H(x_0)},而G&#39;(x)=f&#39;(x)-f&#39;(x_0),H&#39;(x)=2(x-x_0),设x&lt;x_0，由柯西定理可得，\)</span></p>
+<p><span class="math inline">\(存在 i_1\in
+(x,x_0)使得K=\cfrac{G&#39;(i)}{H&#39;(i)}=\cfrac{G&#39;(i_1)-G&#39;(x_0)}{H&#39;(i_1)-H&#39;(x_0)},则
+存在
+i_2\in(i_1,x_0)，K=\cfrac{G&#39;&#39;(i_2)}{H&#39;&#39;(i_2)}=\cfrac{f&#39;&#39;(x)}{2!},则可以发现，f(x)可以利用\)</span></p>
+<p><span
+class="math inline">\(柯西定理进行不断的近似,则泰勒公式就为\)</span></p>
+<p><span
+class="math inline">\(f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+\frac{f&#39;&#39;(x_0)}{2!}(x-x_0)^2+...+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\frac{f^{(n+1)}(i)}{(n+1)!}(x-x_0)^{(n+1)}\)</span></p>
+<p>而麦克劳林展开式为<span class="math inline">\(f(x) = f(0) +
+f&#39;(0)x+\frac{f&#39;&#39;(0)}{2!}x^2+...\frac{f^{(n)}(0)}{n!}x^n+\frac{f^{(n+1)}(i)}{(n+1)!}x^{(n+1)}\)</span></p>
+<h2 id="五个函数的麦克劳林展开式">五个函数的麦克劳林展开式</h2>
+<p>一：<span class="math inline">\(e^x\)</span>:对于<span
+class="math inline">\(e^x\)</span>来说，<span
+class="math inline">\(f^{(n)}(0) = e^0=1\)</span>
+所以其麦克劳林展开式为:<span class="math inline">\(e^x =
+1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+\frac{e^ix^{(n+1)}}{(n+1)!}\)</span></p>
+<p>二：<span class="math inline">\(\sin x\)</span>:<span
+class="math inline">\(f^{(n)}(x) = \sin
+(x+n\frac{\pi}{2})\)</span>，分奇数和偶数讨论:</p>
+<ul>
+<li>当<span class="math inline">\(n = 2k,f^{(2k)}(0)=sin(k\pi)=0, k =
+0,1,2...\)</span></li>
+<li>当<span
+class="math inline">\(n=2k+1,f^{(2k+1)}(0)=sin(\frac{(2k+1)\pi}{2})=sin(k\pi+\frac{\pi}{2})=(-1)^k,k=0,1,2...\)</span></li>
+</ul>
+<p>所以<span class="math inline">\(\sin
+x\)</span>的展开式只与奇数项有关，则通项为<span
+class="math inline">\(\frac{(-1)^k}{(2k+1)!}x^{2k+1}\)</span></p>
+<p>则可知<span class="math inline">\(\sin x =
+x-\frac{1}{3!}x^3+\frac{1}{5!}x^5-\frac{1}{7!}x^7+...+\frac{(-1)^k}{(2k+1)!}x^{2k+1}+R_{2k+1}(x)\)</span></p>
+<p>三：<span class="math inline">\(cosx:f^{(n)}(x) =
+cos(x+n\frac{\pi}{2})\)</span>,分奇数和偶数讨论：</p>
+<ul>
+<li>当<span class="math inline">\(n = 2k,f^{(2k)}(0)=cos(k\pi)=
+(-1)^k,k=0,1,2...\)</span></li>
+<li>当<span
+class="math inline">\(n=2k+1,f^{(2k+1)}(0)=cos(k\pi+\frac{\pi}{2})=0,k=0,1,2...\)</span></li>
+</ul>
+<p>所以<span class="math inline">\(\cos
+x\)</span>的展开项只与偶数项有关，则通项为<span
+class="math inline">\(\frac{(-1)^k}{(2k)!}x^{2k}\)</span></p>
+<p>则可知<span class="math inline">\(\cos
+x=1-\frac{1}{2!}x^2+\frac{1}{4!}x^4-\frac{1}{6!}x^6+...+\frac{(-1)^k}{(2k)!}x^{2k}+R_{2k}(x)\)</span></p>
+<p>聪明的读者可能之前就发现了，既然<span class="math inline">\(\sin
+x\)</span>的展开式我都已经求出来了，那我直接对其求导不就得到<span
+class="math inline">\(\cos x\)</span>的展开式了？</p>
+<p>是的，这样求出来的答案也是正确的！</p>
+<p>四：<span class="math inline">\(ln(1+x):\)</span>当<span
+class="math inline">\(1+x&gt;0,x&gt;-1\)</span>时<span
+class="math inline">\(f^{(n+1)}(x)\)</span>存在，<span
+class="math inline">\(f^{(n)}(x)=(-1)^{(n-1)}(n-1)!(1+x)^{(-n)},n=1,2...,f^{(n)}(0)=(-1)^{(n-1)}(n-1)!,n=1,2,3...\)</span></p>
+<p>则<span
+class="math inline">\(ln(1+x)=x-\frac{1}{2}x^2+\frac{1}{3}x^3-\frac{1}{4}x^4+...+\frac{(-1)^{(n-1)}}{n}x^n+R_n(x)\)</span></p>
+<p>五：<span class="math inline">\((1+x)^a\)</span>:当<span
+class="math inline">\(x&gt;-1\)</span>时，<span
+class="math inline">\(f^{(n+1)}(x)\)</span>存在，<span
+class="math inline">\(f^{(n)}(x)=a(a-1)(a-2)...(a-n+1)(1+x)^{a-n}\)</span></p>
+<p><span
+class="math inline">\(f^{(n)}(0)=a(a-1)(a-2)...(a-n+1)\)</span></p>
+<p>则<span
+class="math inline">\((1+x)^a=1+ax+\frac{a(a-1)}{2!}x^2+\frac{a(a-1)(a-2)}{3!}x^3+...+\frac{a(a-1)(a-2)...(a-n+1)}{n!}x^n+R_n(x)\)</span></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">左宗右</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/">http://example.com/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">LeftMidRight's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/">考研数学</a></div><div class="post_share"><div class="social-share" data-image="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/02/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" title="推荐系统学习"><img class="cover" src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">推荐系统学习</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/01/%E6%AD%A6%E5%BF%A0%E7%A5%A5%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="武忠祥每日一题"><img class="cover" src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">武忠祥每日一题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/01/%E6%AD%A6%E5%BF%A0%E7%A5%A5%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="武忠祥每日一题"><img class="cover" src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-01</div><div class="title">武忠祥每日一题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/xiuhu.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">左宗右</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LeftMidRight"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Never say never!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">泰勒公式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">常用泰勒公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E9%BA%A6%E5%85%8B%E5%8A%B3%E6%9E%97%E5%B1%95%E5%BC%80%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">五个函数的麦克劳林展开式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/15/LeetCode%E5%91%A8%E8%B5%9B/" title="LeetCode周赛"><img src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode周赛"/></a><div class="content"><a class="title" href="/2024/01/15/LeetCode%E5%91%A8%E8%B5%9B/" title="LeetCode周赛">LeetCode周赛</a><time datetime="2024-01-15T07:19:33.000Z" title="发表于 2024-01-15 15:19:33">2024-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="LeetCode每日一题"><img src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode每日一题"/></a><div class="content"><a class="title" href="/2024/01/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="LeetCode每日一题">LeetCode每日一题</a><time datetime="2024-01-15T06:18:06.000Z" title="发表于 2024-01-15 14:18:06">2024-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/02/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" title="推荐系统学习"><img src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐系统学习"/></a><div class="content"><a class="title" href="/2024/01/02/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" title="推荐系统学习">推荐系统学习</a><time datetime="2024-01-02T14:10:49.000Z" title="发表于 2024-01-02 22:10:49">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/" title="泰勒公式理解"><img src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="泰勒公式理解"/></a><div class="content"><a class="title" href="/2022/11/15/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%90%86%E8%A7%A3/" title="泰勒公式理解">泰勒公式理解</a><time datetime="2022-11-15T07:08:43.000Z" title="发表于 2022-11-15 15:08:43">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/01/%E6%AD%A6%E5%BF%A0%E7%A5%A5%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="武忠祥每日一题"><img src="/./img/%E7%AB%A0%E9%B1%BC%E5%93%A5%E6%95%A3%E5%BC%B9%E6%9E%AA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="武忠祥每日一题"/></a><div class="content"><a class="title" href="/2022/11/01/%E6%AD%A6%E5%BF%A0%E7%A5%A5%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="武忠祥每日一题">武忠祥每日一题</a><time datetime="2022-11-01T06:53:22.000Z" title="发表于 2022-11-01 14:53:22">2022-11-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 左宗右</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
