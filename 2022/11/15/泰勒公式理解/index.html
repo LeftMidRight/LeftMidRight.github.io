@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E7%8C%AB%E4%BA%BA.jpg">
 <meta property="article:published_time" content="2022-11-15T07:08:43.000Z">
-<meta property="article:modified_time" content="2024-01-15T07:24:31.970Z">
+<meta property="article:modified_time" content="2024-01-15T13:34:30.814Z">
 <meta property="article:author" content="左宗右">
 <meta property="article:tag" content="考研数学">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-01-15 15:24:31'
+  postUpdate: '2024-01-15 21:34:30'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -162,7 +162,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/xiuhu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E7%8C%AB%E4%BA%BA.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="LeftMidRight's Blog"><span class="site-name">LeftMidRight's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">泰勒公式理解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-15T07:08:43.000Z" title="发表于 2022-11-15 15:08:43">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-15T07:24:31.970Z" title="更新于 2024-01-15 15:24:31">2024-01-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="泰勒公式理解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>注：上一个博客被我玩坏了，从上一个博客搬了些东西过来，以此纪念我失去的博客TAT</strong></p>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/xiuhu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E7%8C%AB%E4%BA%BA.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="LeftMidRight's Blog"><span class="site-name">LeftMidRight's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">泰勒公式理解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-15T07:08:43.000Z" title="发表于 2022-11-15 15:08:43">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-15T13:34:30.814Z" title="更新于 2024-01-15 21:34:30">2024-01-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="泰勒公式理解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>注：上一个博客被我玩坏了，从上一个博客搬了些东西过来，以此纪念我失去的博客TAT</strong></p>
 <h1 id="泰勒公式">泰勒公式</h1>
 <h2 id="常用泰勒公式">常用泰勒公式</h2>
 <p><span class="math display">\[e
@@ -180,24 +180,43 @@ e^x,求f(3.15) = e^{3.15}\)</span>,即如何计算一般化的函数值</p>
 <p>由拉格朗日中值定理，若<span
 class="math inline">\(f(x)\)</span>在<span
 class="math inline">\(a,b\)</span>为断点的区间上满足拉氏条件则，<span
-class="math inline">\(f(a)-f(b)=f&#39;(\theta)(a-b),\theta\in(a,b),再令a=x_0,b=x,若f(x)一阶导存在,则原式=f(x)=f(x_0)+f&#39;(\theta)(x-x_0)\)</span></p>
+class="math inline">\(f(a)-f(b)=f&#39;(\theta)(a-b),\theta\in(a,b)\)</span>,再令<span
+class="math inline">\(a=x_0,b=x\)</span>,若<span
+class="math inline">\(f(x)\)</span>一阶导存在,则原式<span
+class="math inline">\(=f(x)=f(x_0)+f&#39;(\theta)(x-x_0)\)</span></p>
+<p>而若函数<span
+class="math inline">\(f(x)\)</span>的二阶导存在，则我们猜想可以令<span
+class="math inline">\(f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+K(x-x_0)^2\)</span>,</p>
+<p>则<span
+class="math inline">\(K=\cfrac{f(x)-[f(x_0)+f&#39;(x_0)(x-x_0)]}{(x-x_0)^2}\)</span>，（至于为什么这么猜想，我还没猜到<span
+class="math inline">\(QAQ\)</span>）</p>
+<p>我们设<span
+class="math inline">\(G(x)=f(x)-[f(x)+f&#39;(x)(x-x_0)],H(x)=(x-x_0)^2\)</span>,</p>
+<p>而<span
+class="math inline">\(G(x_0)=f(x_0)-[f(x_0)+f&#39;(x_0)(x-x_0)]=0\)</span>,<span
+class="math inline">\(H(x_0)=0\)</span>,所以<span
+class="math inline">\(K=\cfrac{G(x)-G(x_0)}{H(x)-H(x_0)}\)</span>,</p>
+<p>而<span
+class="math inline">\(G&#39;(x)=f&#39;(x)-f&#39;(x_0),H&#39;(x)=2(x-x_0)\)</span>,设
+<span class="math inline">\(x&lt;x_0\)</span>，由柯西定理可得,存在 <span
+class="math inline">\(i_1\in (x,x_0)\)</span>使得</p>
 <p><span
-class="math inline">\(而若函数f(x)的二阶导存在，则我们猜想可以将f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+K(x-x_0)^2,则K=\frac{f(x)-[f(x_0)+f&#39;(x_0)(x-x_0)]}{(x-x_0)^2}\)</span></p>
+class="math inline">\(K=\cfrac{G&#39;(i)}{H&#39;(i)}=\cfrac{G&#39;(i_1)-G&#39;(x_0)}{H&#39;(i_1)-H&#39;(x_0)}\)</span>,则存在
+<span
+class="math inline">\(i_2\in(i_1,x_0)，K=\cfrac{G&#39;&#39;(i_2)}{H&#39;&#39;(i_2)}=\cfrac{f&#39;&#39;(x)}{2!}\)</span>。</p>
+<p>诶！我们发现可以一直这样“猜想”下去，使得系数<span
+class="math inline">\(K\)</span>的多项式的次方数越来越高，如法炮制解出系数<span
+class="math inline">\(K\)</span>的值，则可以发现，<span
+class="math inline">\(f(x)\)</span>可以利用<span
+class="math inline">\(n\)</span>轮柯西定理进行不断的近似,则泰勒公式就为:</p>
 <p><span
-class="math inline">\(我们设G(x)=f(x)-[f(x)+f&#39;(x)(x-x_0)],H(x)=(x-x_0)^2,而G(x_0)=
-f(x_0)-[f(x_0)+f&#39;(x_0)(x-x_0)]=0,\)</span></p>
-<p><span
-class="math inline">\(H(x_0)=0,所以K=\cfrac{G(x)-G(x_0)}{H(x)-H(x_0)},而G&#39;(x)=f&#39;(x)-f&#39;(x_0),H&#39;(x)=2(x-x_0),设x&lt;x_0，由柯西定理可得，\)</span></p>
-<p><span class="math inline">\(存在 i_1\in
-(x,x_0)使得K=\cfrac{G&#39;(i)}{H&#39;(i)}=\cfrac{G&#39;(i_1)-G&#39;(x_0)}{H&#39;(i_1)-H&#39;(x_0)},则
-存在
-i_2\in(i_1,x_0)，K=\cfrac{G&#39;&#39;(i_2)}{H&#39;&#39;(i_2)}=\cfrac{f&#39;&#39;(x)}{2!},则可以发现，f(x)可以利用\)</span></p>
-<p><span
-class="math inline">\(柯西定理进行不断的近似,则泰勒公式就为\)</span></p>
-<p><span
-class="math inline">\(f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+\frac{f&#39;&#39;(x_0)}{2!}(x-x_0)^2+...+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\frac{f^{(n+1)}(i)}{(n+1)!}(x-x_0)^{(n+1)}\)</span></p>
-<p>而麦克劳林展开式为<span class="math inline">\(f(x) = f(0) +
-f&#39;(0)x+\frac{f&#39;&#39;(0)}{2!}x^2+...\frac{f^{(n)}(0)}{n!}x^n+\frac{f^{(n+1)}(i)}{(n+1)!}x^{(n+1)}\)</span></p>
+class="math display">\[f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+\frac{f&#39;&#39;(x_0)}{2!}(x-x_0)^2+...+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\frac{f^{(n+1)}(i)}{(n+1)!}(x-x_0)^{(n+1)}，i
+\in (x,x_0)\]</span></p>
+<p>在<span
+class="math inline">\(x=0\)</span>处泰勒展开有一个别名——麦克劳林展开式
+而麦克劳林展开式为: <span class="math display">\[f(x) = f(0) +
+f&#39;(0)x+\frac{f&#39;&#39;(0)}{2!}x^2+...\frac{f^{(n)}(0)}{n!}x^n+\frac{f^{(n+1)}(i)}{(n+1)!}x^{(n+1)},
+i\in(x,0),(x&gt;0)\]</span></p>
 <h2 id="五个函数的麦克劳林展开式">五个函数的麦克劳林展开式</h2>
 <p>一：<span class="math inline">\(e^x\)</span>:对于<span
 class="math inline">\(e^x\)</span>来说，<span
