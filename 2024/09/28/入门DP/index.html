@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>入门DP | LeftMidRight's Blog</title><meta name="author" content="左宗右"><meta name="copyright" content="左宗右"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="入门DP 记忆化搜索是入门DP的神器，但记忆化搜索并不是万能的，某些题目只有写成递推，才能结合数据结构等来优化时间复杂度，多数题目还可以优化空间复杂度。 ​ 要解决一个DP问题就要知道状态定义和状态转移方程。 ​ 启发思路：选或不选&#x2F;选哪个 DP萌新三步：  思考回溯要怎么写：  入参和返回值 递归到哪里 递归边界和入口  改成记忆化搜索 1:1翻译成递推  注意：在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="入门DP">
+<meta property="og:url" content="http://example.com/2024/09/28/%E5%85%A5%E9%97%A8DP/index.html">
+<meta property="og:site_name" content="LeftMidRight&#39;s Blog">
+<meta property="og:description" content="入门DP 记忆化搜索是入门DP的神器，但记忆化搜索并不是万能的，某些题目只有写成递推，才能结合数据结构等来优化时间复杂度，多数题目还可以优化空间复杂度。 ​ 要解决一个DP问题就要知道状态定义和状态转移方程。 ​ 启发思路：选或不选&#x2F;选哪个 DP萌新三步：  思考回溯要怎么写：  入参和返回值 递归到哪里 递归边界和入口  改成记忆化搜索 1:1翻译成递推  注意：在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png">
+<meta property="article:published_time" content="2024-09-28T12:29:18.000Z">
+<meta property="article:modified_time" content="2024-09-28T12:42:08.051Z">
+<meta property="article:author" content="左宗右">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/09/28/%E5%85%A5%E9%97%A8DP/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '入门DP',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-28 20:42:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/xiuhu.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png')"><nav id="nav"><span id="blog-info"><a href="/" title="LeftMidRight's Blog"><span class="site-name">LeftMidRight's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">入门DP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-28T12:29:18.000Z" title="发表于 2024-09-28 20:29:18">2024-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-28T12:42:08.051Z" title="更新于 2024-09-28 20:42:08">2024-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/0x3f%E9%A2%98%E5%8D%95/">0x3f题单</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="入门DP"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="入门dp">入门DP</h1>
+<p>记忆化搜索是入门DP的神器，但记忆化搜索并不是万能的，某些题目只有写成递推，才能结合数据结构等来优化时间复杂度，多数题目还可以优化空间复杂度。</p>
+<p>​ 要解决一个DP问题就要知道状态定义和状态转移方程。</p>
+<p>​ 启发思路：选或不选/选哪个</p>
+<p><strong>DP萌新三步：</strong></p>
+<ol type="1">
+<li><strong>思考回溯要怎么写：</strong>
+<ul>
+<li><strong>入参和返回值</strong></li>
+<li><strong>递归到哪里</strong></li>
+<li><strong>递归边界和入口</strong></li>
+</ul></li>
+<li><strong>改成记忆化搜索</strong></li>
+<li><strong>1:1翻译成递推</strong></li>
+</ol>
+<p><strong>注意：在定义DFS或者DP数组的含义时，它只能表示从一些元素中算出的结果，而不是从一个元素中算出的结果</strong></p>
+<h2 id="爬楼梯">1.1 爬楼梯</h2>
+<h3 id="爬楼梯-1"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/description/">70.爬楼梯</a></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">climbStairs</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n + <span class="number">1</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">                dp[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用最小花费爬楼梯"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-climbing-stairs/">746.
+使用最小花费爬楼梯</a></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minCostClimbingStairs</span><span class="params">(<span class="type">int</span>[] cost)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> cost.length;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>] = dp[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">            dp[i] = Math.min(dp[i-<span class="number">1</span>]+cost[i-<span class="number">1</span>], dp[i-<span class="number">2</span>]+cost[i-<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="组合总和-ⅳ"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum-iv/">377. 组合总和
+Ⅳ</a></h3>
+<p><strong>记忆化搜索</strong></p>
+<p>本质是爬楼梯，每一次爬楼的层数从nums里面选</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] nums, memo;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">combinationSum4</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.nums = nums;</span><br><span class="line">        <span class="built_in">this</span>.n = nums.length;</span><br><span class="line"></span><br><span class="line">        memo = <span class="keyword">new</span> <span class="title class_">int</span>[target + <span class="number">1</span>];</span><br><span class="line">        Arrays.fill(memo, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> dfs(target);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> sum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(sum == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(memo[sum] != -<span class="number">1</span>) <span class="keyword">return</span> memo[sum];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">            result += dfs(sum - nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> memo[sum] = result;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>翻译为递推</strong></p>
+<p>​
+我们可以思考<strong>当前的sum可以由哪些sum走过来</strong>这个问题，来写出状态转移方程，可以发现，只要sum+nums[i]
+&lt;= target，那么都可以作为当前状态的前一步</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">combinationSum4</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[target + <span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= target; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j ++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i - nums[j] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i] += dp[i - nums[j]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>进阶：</strong>如果给定的数组中含有负数会发生什么？问题会产生何种变化？如果允许负数出现，需要向题目中添加哪些限制条件？</p>
+<p><strong>答：</strong>出现负数的话会可能会有无数种到达target的方法，如果允许负数出现，应该限制负数的使用次数</p>
+<h3 id="统计构造好字符串的方案数"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-ways-to-build-good-strings/">2466.
+统计构造好字符串的方案数</a></h3>
+<p><strong>记忆化搜索</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="打家劫舍">1.2 打家劫舍</h2>
+<h3 id="打家劫舍-1"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber/description/">198.打家劫舍</a></h3>
+<p><strong>回溯三问</strong>：</p>
+<ol type="1">
+<li>当前操作？枚举第i个房子选/不选</li>
+<li>子问题？从前i个房子中得到的最大金额和<br />
+</li>
+<li>下一个子问题？分类讨论
+<ul>
+<li>不选：从前i-1个房子中得到的最大金额和</li>
+<li>选：从前i-2个房子中得到的最大金额和</li>
+</ul></li>
+</ol>
+<p><strong>首先写出暴力的回溯代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Class Solution &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] nums;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.nums =nums;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">return</span> dfs(n-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dfs(i-<span class="number">1</span>),dfs(i-<span class="number">2</span>)+nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现回溯代码对于每一个 <span class="math inline">\(i\)</span>
+都会搜到底，直到触发 <span class="math inline">\(i&lt;0\)</span> 返回
+<span
+class="math inline">\(0\)</span>。而在回溯的过程中，我们重复的计算了很多的分支，而对于一个确定的
+<span class="math inline">\(i\)</span>
+，只有唯一的<strong>最高金额</strong>与之对应，所以一个 <span
+class="math inline">\(i\)</span>
+就代表了一个分支，我们可以用一个数组记录该分支的状态，只要搜过该分支，该分支的最高金额就被记录，到下一次搜到相同的分支的时候就可以直接通过数组来返回</p>
+<p><strong>记忆化搜索代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] memo, nums;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.nums = nums; <span class="comment">//将rob函数中的nums赋值给Solution类的属性，这样该类中其他函数就可以使用到函数中nums的值</span></span><br><span class="line">       	<span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        memo = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        Arrays.fill(memo, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> dfs(n-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(memo[i] != -<span class="number">1</span>) <span class="keyword">return</span> memo[i];</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Math.max(dfs(i-<span class="number">1</span>), dfs(i-<span class="number">2</span>)+nums[i]);</span><br><span class="line">        <span class="keyword">return</span> memo[i] = result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1:1翻译成递推：</p>
+<ul>
+<li>dfs -&gt; dp数组</li>
+<li>递归 -&gt; 循环</li>
+<li>递归边界 -&gt; 数组初始值</li>
+</ul>
+<p>例如本题的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs(i) = Math.max(dfs(i-<span class="number">1</span>),dfs(i-<span class="number">2</span>)+nums[i]);</span><br></pre></td></tr></table></figure>
+<p>就可以被翻译为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = Math.max(dp[i-<span class="number">1</span>],dp[i-<span class="number">2</span>]+nums[i]);</span><br></pre></td></tr></table></figure>
+<p>最后可以得到递推的代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">2</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">            <span class="comment">//这里为了避免特判负数下标，把i都+2</span></span><br><span class="line">            dp[i + <span class="number">2</span>] = Math.max(dp[i + <span class="number">1</span>], dp[i] + nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">左宗右</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/09/28/%E5%85%A5%E9%97%A8DP/">http://example.com/2024/09/28/%E5%85%A5%E9%97%A8DP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">LeftMidRight's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/05/31/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" title="基础算法"><img class="cover" src="/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基础算法</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/xiuhu.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">左宗右</div><div class="author-info__description">天天处于战斗状态！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LeftMidRight"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A5%E9%97%A8dp"><span class="toc-number">1.</span> <span class="toc-text">入门DP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 爬楼梯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E6%A5%BC%E6%A2%AF-1"><span class="toc-number">1.1.1.</span> <span class="toc-text">70.爬楼梯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">746.
+使用最小花费爬楼梯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E2%85%B3"><span class="toc-number">1.1.3.</span> <span class="toc-text">377. 组合总和
+Ⅳ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%9E%84%E9%80%A0%E5%A5%BD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text">2466.
+统计构造好字符串的方案数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 打家劫舍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">198.打家劫舍</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/28/%E5%85%A5%E9%97%A8DP/" title="入门DP"><img src="/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="入门DP"/></a><div class="content"><a class="title" href="/2024/09/28/%E5%85%A5%E9%97%A8DP/" title="入门DP">入门DP</a><time datetime="2024-09-28T12:29:18.000Z" title="发表于 2024-09-28 20:29:18">2024-09-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" title="基础算法"><img src="/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基础算法"/></a><div class="content"><a class="title" href="/2024/05/31/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" title="基础算法">基础算法</a><time datetime="2024-05-31T15:16:38.000Z" title="发表于 2024-05-31 23:16:38">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0%E4%B8%8E%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/" title="最大公因数与辗转相除法"><img src="/./img/%E7%8C%AB%E4%BA%BA.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最大公因数与辗转相除法"/></a><div class="content"><a class="title" href="/2024/05/31/%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0%E4%B8%8E%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/" title="最大公因数与辗转相除法">最大公因数与辗转相除法</a><time datetime="2024-05-31T15:13:42.000Z" title="发表于 2024-05-31 23:13:42">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/09/%E6%95%B4%E6%95%B0%E7%9A%84%E5%8F%AF%E9%99%A4%E6%80%A7/" title="整数的可除性"><img src="/./img/%E7%8C%AB%E4%BA%BA.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="整数的可除性"/></a><div class="content"><a class="title" href="/2024/04/09/%E6%95%B4%E6%95%B0%E7%9A%84%E5%8F%AF%E9%99%A4%E6%80%A7/" title="整数的可除性">整数的可除性</a><time datetime="2024-04-09T04:04:35.000Z" title="发表于 2024-04-09 12:04:35">2024-04-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95/" title="机器学习模型和算法"><img src="/./img/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习模型和算法"/></a><div class="content"><a class="title" href="/2024/01/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95/" title="机器学习模型和算法">机器学习模型和算法</a><time datetime="2024-01-21T12:48:12.000Z" title="发表于 2024-01-21 20:48:12">2024-01-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 左宗右</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
